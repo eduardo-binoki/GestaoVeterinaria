@@ -1,4 +1,4 @@
-Sistema de Gestão Veterinária
+ Sistema de Gestão Veterinária
 Sistema web desenvolvido para auxiliar no gerenciamento de clínicas veterinárias, 
 centralizando o cadastro de tutores, pacientes, veterinários e o controle das principais 
 atividades clínicas.
@@ -86,4 +86,4 @@ Commit message:
 docs: atualizar README do projeto
 Extended description:
 Adiciona a documentação do sistema de gestão veterinária, apresentando as 
-tecnologias utilizadas, funcionalidades, arquitetura e autenticação
+tecnologias utilizadas, funcionalidades, arquitetura e autenticação.
