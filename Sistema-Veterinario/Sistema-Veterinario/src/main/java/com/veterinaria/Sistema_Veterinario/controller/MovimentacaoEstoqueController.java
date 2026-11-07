@@ -1,0 +1,64 @@
+package com.veterinaria.Sistema_Veterinario.controller;
+
+import com.veterinaria.Sistema_Veterinario.dto.MovimentacaoDtos.CriarMovimentacaoRequest;
+import com.veterinaria.Sistema_Veterinario.dto.MovimentacaoDtos.MovimentacaoRequest;
+import com.veterinaria.Sistema_Veterinario.dto.MovimentacaoDtos.MovimentacaoResponse;
+import com.veterinaria.Sistema_Veterinario.service.ProdutoService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/movimentacoes")
+@RequiredArgsConstructor
+@PreAuthorize("hasAnyRole('ADMIN','VETERINARIO','RECEPCAO')")
+public class MovimentacaoEstoqueController {
+
+    private final ProdutoService produtoService;
+
+    @GetMapping
+    public List<MovimentacaoResponse> listar(@RequestParam(required = false) Long produtoId) {
+        return produtoService.listarMovimentacoes(produtoId);
+    }
+
+    @GetMapping("/{id}")
+    public MovimentacaoResponse buscar(@PathVariable Long id) {
+        return produtoService.buscarMovimentacao(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAnyRole('ADMIN','VETERINARIO')")
+    public MovimentacaoResponse criar(@Valid @RequestBody CriarMovimentacaoRequest request,
+                                      Authentication authentication) {
+        return produtoService.movimentar(request.produtoId(), request.paraRequest(), authentication.getName());
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','VETERINARIO')")
+    public MovimentacaoResponse atualizar(@PathVariable Long id,
+                                          @Valid @RequestBody MovimentacaoRequest request) {
+        return produtoService.atualizarMovimentacao(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasAnyRole('ADMIN','VETERINARIO')")
+    public void excluir(@PathVariable Long id) {
+        produtoService.excluirMovimentacao(id);
+    }
+}

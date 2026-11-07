@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão Veterinário · Configurações</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button
+        type="button"
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="app-drawer"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a class="topbar-logo" href="dashboard.html" aria-label="Ir para o painel">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 13.5c-2.7 0-5.5 2.1-5.5 4.3 0 1.4 1.1 2.2 2.4 2.2 1 0 1.9-.4 3.1-.4s2.1.4 3.1.4c1.3 0 2.4-.8 2.4-2.2 0-2.2-2.8-4.3-5.5-4.3Z"/>
+          <ellipse cx="5.4" cy="11" rx="2.1" ry="2.7" transform="rotate(-18 5.4 11)"/>
+          <ellipse cx="18.6" cy="11" rx="2.1" ry="2.7" transform="rotate(18 18.6 11)"/>
+          <ellipse cx="9.2" cy="7.2" rx="2.1" ry="2.8" transform="rotate(-8 9.2 7.2)"/>
+          <ellipse cx="14.8" cy="7.2" rx="2.1" ry="2.8" transform="rotate(8 14.8 7.2)"/>
+        </svg>
+        <span>Gestão Veterinário</span>
+      </a>
+    </div>
+
+    <div class="topbar-search">
+      <div class="search-field">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m16.5 16.5 4 4"/>
+        </svg>
+        <input
+          type="search"
+          id="busca-rotinas"
+          class="search-input"
+          placeholder="Pesquisar..."
+          autocomplete="off"
+          aria-label="Pesquisar rotina"
+          aria-expanded="false"
+          aria-controls="busca-resultados"
+          aria-autocomplete="list"
+          aria-haspopup="listbox"
+          role="combobox"
+        >
+      </div>
+      <div class="search-results" id="busca-resultados" role="listbox" hidden></div>
+    </div>
+
+    <div class="topbar-user" id="user-menu">
+      <button
+        type="button"
+        class="user-button"
+        id="user-menu-toggle"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        aria-controls="user-dropdown"
+      >
+        <div class="user-info">
+          <strong id="usuario-nome">Carregando...</strong>
+          <span id="usuario-email"></span>
+        </div>
+        <div class="avatar" id="usuario-avatar">--</div>
+        <svg class="user-chevron" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </button>
+
+      <div class="user-dropdown" id="user-dropdown" role="menu" hidden>
+        <div class="user-dropdown-header">
+          <strong id="dropdown-nome">Usuário</strong>
+          <span id="dropdown-email"></span>
+        </div>
+
+        <a class="user-dropdown-item" href="configuracoes.html" role="menuitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+          </svg>
+          Configurações
+        </a>
+
+        <button type="button" class="user-dropdown-item danger" id="user-logout" role="menuitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <path d="m16 17 5-5-5-5"/>
+            <path d="M21 12H9"/>
+          </svg>
+          Encerrar sessão
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="drawer-overlay" id="drawer-overlay" hidden></div>
+
+  <aside class="drawer" id="app-drawer" aria-hidden="true" aria-label="Menu principal">
+    <div class="drawer-header">
+      <a class="drawer-brand" href="dashboard.html" aria-label="Ir para o painel">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 13.5c-2.7 0-5.5 2.1-5.5 4.3 0 1.4 1.1 2.2 2.4 2.2 1 0 1.9-.4 3.1-.4s2.1.4 3.1.4c1.3 0 2.4-.8 2.4-2.2 0-2.2-2.8-4.3-5.5-4.3Z"/>
+          <ellipse cx="5.4" cy="11" rx="2.1" ry="2.7" transform="rotate(-18 5.4 11)"/>
+          <ellipse cx="18.6" cy="11" rx="2.1" ry="2.7" transform="rotate(18 18.6 11)"/>
+          <ellipse cx="9.2" cy="7.2" rx="2.1" ry="2.8" transform="rotate(-8 9.2 7.2)"/>
+          <ellipse cx="14.8" cy="7.2" rx="2.1" ry="2.8" transform="rotate(8 14.8 7.2)"/>
+        </svg>
+        <span>Gestão Veterinário</span>
+      </a>
+    </div>
+
+    <nav class="drawer-nav" id="drawer-nav"></nav>
+
+    <div class="drawer-footer">
+      <button type="button" class="drawer-logout" id="drawer-logout">Sair da conta</button>
+    </div>
+  </aside>
+
+  <main class="config-page">
+    <div class="config-header">
+      <h1>Configurações</h1>
+      <p>Gerencie sua conta, suas preferências e a segurança do acesso.</p>
+    </div>
+
+    <div class="config-tabs" role="tablist" aria-label="Seções de configuração">
+      <button
+        type="button"
+        class="config-tab ativo"
+        id="tab-conta"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-conta"
+        tabindex="0"
+        data-tab="conta"
+      >
+        Conta
+      </button>
+      <button
+        type="button"
+        class="config-tab"
+        id="tab-preferencias"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-preferencias"
+        tabindex="-1"
+        data-tab="preferencias"
+      >
+        Preferências
+      </button>
+      <button
+        type="button"
+        class="config-tab"
+        id="tab-seguranca"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-seguranca"
+        tabindex="-1"
+        data-tab="seguranca"
+      >
+        Segurança
+      </button>
+    </div>
+
+    <section class="config-panel" id="panel-conta" role="tabpanel" aria-labelledby="tab-conta">
+      <section class="config-card">
+        <h2>Dados da conta</h2>
+        <p>Informações do usuário autenticado.</p>
+
+        <dl class="config-list">
+          <div class="config-row">
+            <dt>Nome</dt>
+            <dd id="cfg-nome">—</dd>
+          </div>
+          <div class="config-row">
+            <dt>E-mail</dt>
+            <dd id="cfg-email">—</dd>
+          </div>
+          <div class="config-row">
+            <dt>Perfil</dt>
+            <dd><span class="config-role" id="cfg-role">—</span></dd>
+          </div>
+          <div class="config-row">
+            <dt>Situação</dt>
+            <dd id="cfg-status">—</dd>
+          </div>
+          <div class="config-row">
+            <dt>Cadastrado em</dt>
+            <dd id="cfg-criado">—</dd>
+          </div>
+        </dl>
+
+        <p class="config-note">
+          Para alterar nome ou perfil, procure um administrador do sistema.
+        </p>
+      </section>
+    </section>
+
+    <section class="config-panel" id="panel-preferencias" role="tabpanel" aria-labelledby="tab-preferencias" hidden>
+      <section class="config-card">
+        <h2>Preferências</h2>
+        <p>Ajustes salvos neste navegador.</p>
+
+        <label class="config-toggle">
+          <input type="checkbox" id="cfg-lembrar" autocomplete="off">
+          <span>
+            <strong>Manter sessão neste navegador</strong>
+            <small>
+              Quando desativado, a sessão termine ao fechar o navegador.
+            </small>
+          </span>
+        </label>
+
+        <p class="config-feedback" id="cfg-feedback" hidden>
+          Preferência salva com sucesso.
+        </p>
+      </section>
+    </section>
+
+    <section class="config-panel config-panel-split" id="panel-seguranca" role="tabpanel" aria-labelledby="tab-seguranca" hidden>
+      <section class="config-card">
+        <h2>Alterar senha</h2>
+        <p>Atualize a senha usada para acessar o sistema.</p>
+
+        <form id="senha-form" class="config-form" autocomplete="off" data-form-type="other" novalidate>
+          <div class="field">
+            <label for="senha-atual">Senha atual</label>
+            <div class="input-wrap">
+              <input
+                type="text"
+                class="senha-mascarada"
+                id="senha-atual"
+                name="senhaAtual"
+                placeholder="Sua senha atual"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                data-lpignore="true"
+                data-1p-ignore="true"
+                data-bwignore="true"
+                data-form-type="other"
+                required
+              >
+              <button
+                type="button"
+                class="toggle-password"
+                data-toggle-senha="senha-atual"
+                aria-label="Mostrar senha"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 5c5 0 9.3 3.1 11 7-1.7 3.9-6 7-11 7S2.7 15.9 1 12c1.7-3.9 6-7 11-7Zm0 2c-3.8 0-7.2 2.2-8.8 5 1.6 2.8 5 5 8.8 5s7.2-2.2 8.8-5c-1.6-2.8-5-5-8.8-5Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" id="senha-atual-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="nova-senha">Nova senha</label>
+            <div class="input-wrap">
+              <input
+                type="text"
+                class="senha-mascarada"
+                id="nova-senha"
+                name="novaSenha"
+                placeholder="Mínimo de 6 caracteres"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                data-lpignore="true"
+                data-1p-ignore="true"
+                data-bwignore="true"
+                data-form-type="other"
+                required
+              >
+              <button
+                type="button"
+                class="toggle-password"
+                data-toggle-senha="nova-senha"
+                aria-label="Mostrar senha"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 5c5 0 9.3 3.1 11 7-1.7 3.9-6 7-11 7S2.7 15.9 1 12c1.7-3.9 6-7 11-7Zm0 2c-3.8 0-7.2 2.2-8.8 5 1.6 2.8 5 5 8.8 5s7.2-2.2 8.8-5c-1.6-2.8-5-5-8.8-5Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" id="nova-senha-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="confirmar-senha">Confirmar nova senha</label>
+            <div class="input-wrap">
+              <input
+                type="text"
+                class="senha-mascarada"
+                id="confirmar-senha"
+                name="confirmarSenha"
+                placeholder="Repita a nova senha"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                data-lpignore="true"
+                data-1p-ignore="true"
+                data-bwignore="true"
+                data-form-type="other"
+                required
+              >
+              <button
+                type="button"
+                class="toggle-password"
+                data-toggle-senha="confirmar-senha"
+                aria-label="Mostrar senha"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 5c5 0 9.3 3.1 11 7-1.7 3.9-6 7-11 7S2.7 15.9 1 12c1.7-3.9 6-7 11-7Zm0 2c-3.8 0-7.2 2.2-8.8 5 1.6 2.8 5 5 8.8 5s7.2-2.2 8.8-5c-1.6-2.8-5-5-8.8-5Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" id="confirmar-senha-error"></span>
+          </div>
+
+          <div class="alert" id="senha-alert" role="alert" hidden></div>
+          <p class="config-feedback" id="senha-feedback" hidden></p>
+
+          <button type="submit" class="btn-primary" id="btn-alterar-senha">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-label">Salvar nova senha</span>
+          </button>
+        </form>
+      </section>
+
+      <section class="config-card">
+        <h2>Encerrar sessão</h2>
+        <p>Saia da sua conta neste dispositivo.</p>
+        <button type="button" class="btn-danger" id="cfg-logout">
+          Encerrar sessão
+        </button>
+      </section>
+    </section>
+  </main>
+
+  <script src="assets/js/config.js?v=20261105"></script>
+  <script src="assets/js/session.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/menu-data.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/menu.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/user-menu.js"></script>
+  <script src="assets/js/configuracoes.js"></script>
+</body>
+</html>

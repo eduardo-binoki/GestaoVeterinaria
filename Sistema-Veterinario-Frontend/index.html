@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão Veterinário · Login</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 13.5c-2.7 0-5.5 2.1-5.5 4.3 0 1.4 1.1 2.2 2.4 2.2 1 0 1.9-.4 3.1-.4s2.1.4 3.1.4c1.3 0 2.4-.8 2.4-2.2 0-2.2-2.8-4.3-5.5-4.3Z"/>
+          <ellipse cx="5.4" cy="11" rx="2.1" ry="2.7" transform="rotate(-18 5.4 11)"/>
+          <ellipse cx="18.6" cy="11" rx="2.1" ry="2.7" transform="rotate(18 18.6 11)"/>
+          <ellipse cx="9.2" cy="7.2" rx="2.1" ry="2.8" transform="rotate(-8 9.2 7.2)"/>
+          <ellipse cx="14.8" cy="7.2" rx="2.1" ry="2.8" transform="rotate(8 14.8 7.2)"/>
+        </svg>
+        <span>Gestão Veterinário</span>
+      </div>
+
+      <div class="brand-content">
+        <h1>Gestão veterinária completa para o seu dia a dia.</h1>
+        <p>Pets, tutores, consultas, prontuários e estoque organizados em um só lugar.</p>
+
+        <ul class="brand-features">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 16.2-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4L9 16.2Z"/></svg>
+            Agenda de consultas e vacinas
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 16.2-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4L9 16.2Z"/></svg>
+            Prontuário digital dos pacientes
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 16.2-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4L9 16.2Z"/></svg>
+            Controle de estoque e produtos
+          </li>
+        </ul>
+      </div>
+
+      <p class="brand-footer">© 2026 Gestão Veterinário</p>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <header class="login-header">
+          <h2>Bem-vindo de volta</h2>
+          <p>Acesse sua conta para continuar.</p>
+        </header>
+
+        <form id="login-form" autocomplete="off" novalidate>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 7.1L4.9 7.2v10.6h14.2V7.2L12 12.1Zm0-2.2 6.6-2.9H5.4L12 9.9Z"/>
+              </svg>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Seu email"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+              >
+            </div>
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="senha">Senha</label>
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a5 5 0 0 1 5 5v3h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1V7a5 5 0 0 1 5-5Zm3 8V7a3 3 0 0 0-6 0v3h6Zm-3 4a1.5 1.5 0 0 0-.8 2.8V18h1.6v-1.2A1.5 1.5 0 0 0 12 14Z"/>
+              </svg>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Sua senha"
+                autocomplete="new-password"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+              >
+              <button type="button" class="toggle-password" id="toggle-senha" aria-label="Mostrar senha">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 5c5 0 9.3 3.1 11 7-1.7 3.9-6 7-11 7S2.7 15.9 1 12c1.7-3.9 6-7 11-7Zm0 2c-3.8 0-7.2 2.2-8.8 5 1.6 2.8 5 5 8.8 5s7.2-2.2 8.8-5c-1.6-2.8-5-5-8.8-5Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" id="senha-error"></span>
+          </div>
+
+          <div class="form-options">
+            <label class="remember">
+              <input type="checkbox" id="lembrar" autocomplete="off">
+              <span>Lembrar de mim</span>
+            </label>
+          </div>
+
+          <div class="alert" id="login-alert" role="alert" hidden></div>
+
+          <button type="submit" class="btn-primary" id="btn-entrar">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-label">Entrar</span>
+          </button>
+        </form>
+
+        <p class="demo-hint">
+          Acesso de teste: <strong>admin@vet.com</strong> / <strong>admin123</strong>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/config.js?v=20261105"></script>
+  <script src="assets/js/session.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>
