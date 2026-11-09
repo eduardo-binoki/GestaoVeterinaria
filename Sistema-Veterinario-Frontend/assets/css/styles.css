@@ -40,6 +40,11 @@ body {
   padding: 0;
 }
 
+html {
+  background-color: var(--surface-muted);
+  overscroll-behavior-y: none;
+}
+
 body {
   font-family: var(--font);
   color: var(--ink-900);
@@ -429,6 +434,9 @@ a {
 /* ---------- Dashboard ---------- */
 
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: grid;
   grid-template-columns: 1fr minmax(200px, 410px) 1fr;
   align-items: center;
@@ -437,6 +445,12 @@ a {
   background: var(--brand-700);
   border-bottom: 1px solid var(--brand-800);
   color: #fff;
+  transition: opacity 0.28s ease;
+}
+
+.topbar.topbar-oculta {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .topbar-logo {

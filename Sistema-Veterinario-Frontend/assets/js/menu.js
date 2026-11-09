@@ -25,6 +25,42 @@ document.addEventListener('DOMContentLoaded', () => {
     new ResizeObserver(ajustarAlturaTopbar).observe(topbar);
   }
 
+  const TEMPO_INATIVO = 2500;
+  let timerInativo = null;
+
+  function mostrarTopbar() {
+    if (!topbar) {
+      return;
+    }
+    topbar.classList.remove('topbar-oculta');
+    window.clearTimeout(timerInativo);
+    timerInativo = window.setTimeout(ocultarTopbar, TEMPO_INATIVO);
+  }
+
+  function ocultarTopbar() {
+    if (!topbar) {
+      return;
+    }
+    if (document.body.classList.contains('menu-aberto')) {
+      return;
+    }
+    if (topbar.matches(':hover')) {
+      return;
+    }
+    if (topbar.contains(document.activeElement)) {
+      return;
+    }
+    topbar.classList.add('topbar-oculta');
+  }
+
+  document.addEventListener('pointermove', mostrarTopbar, { passive: true });
+  document.addEventListener('pointerdown', mostrarTopbar, { passive: true });
+  document.addEventListener('scroll', mostrarTopbar, { passive: true });
+  if (topbar) {
+    topbar.addEventListener('focusin', mostrarTopbar);
+  }
+  mostrarTopbar();
+
   const ICONES = {
     home: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/>',
     tutor: '<circle cx="12" cy="8" r="4"/><path d="M4.5 21c0-4 3.4-6.5 7.5-6.5s7.5 2.5 7.5 6.5"/>',
