@@ -23,7 +23,7 @@ O projeto tem como objetivo facilitar a organização dos atendimentos, o acompa
 - Fetch API
 
 ### Banco de dados
-- H2 Database
+- MySQL 8
 - Hibernate / JPA
 
 ## 📋 Funcionalidades
@@ -93,3 +93,51 @@ Também busca simular funcionalidades presentes em sistemas reais de gestão vet
 ## 💻 Desenvolvimento
 
 Projeto desenvolvido para fins de aprendizado e aprimoramento de conhecimentos em desenvolvimento Full Stack.
+
+## ⚙️ Como executar
+
+O projeto está configurado para usar **MySQL** por padrão (perfil `mysql`).
+
+### 1. Subir o banco de dados (MySQL)
+
+A forma mais simples é com Docker Compose, que já cria o banco `sistema_vet_app`, o usuário `vet`/`vet` e importa o dump `sistema_vet_app.sql` automaticamente:
+
+```bash
+docker compose up -d
+```
+
+- MySQL: `localhost:3306`
+- Banco: `sistema_vet_app`
+- Usuário: `vet`
+- Senha: `vet`
+- phpMyAdmin: http://localhost:8081 (login `vet` / `vet`)
+
+> Se preferir um MySQL instalado localmente, crie o banco `sistema_vet_app` e o usuário `vet` com senha `vet`, e importe o arquivo `sistema_vet_app.sql` (`mysql -uvet -p sistema_vet_app < sistema_vet_app.sql`).
+
+### 2. Rodar o backend
+
+Na pasta `Sistema-Veterinario/Sistema-Veterinario`:
+
+```bash
+./mvnw spring-boot:run
+```
+
+A API sobe em http://localhost:8080.
+
+### 3. Abrir o frontend
+
+O frontend são arquivos estáticos na pasta `Sistema-Veterinario-Frontend`. Sirva a pasta com qualquer servidor estático, por exemplo:
+
+```bash
+python3 -m http.server 5500 --directory Sistema-Veterinario-Frontend
+```
+
+Acesse http://localhost:5500.
+
+### Credenciais de acesso
+
+- **Admin:** `admin@vet.com` / `admin123`
+- **Veterinário:** `vet@vet.com` / `vet123`
+- **Recepção:** `recepcao@vet.com` / `recepcao123`
+
+> Observação: os dados padrão só são criados automaticamente quando o banco está vazio. Ao importar o dump, os usuários já vêm cadastrados.
