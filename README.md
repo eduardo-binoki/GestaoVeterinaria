@@ -98,6 +98,12 @@ Projeto desenvolvido para fins de aprendizado e aprimoramento de conhecimentos e
 
 O projeto está configurado para usar **MySQL** por padrão (perfil `mysql`).
 
+### Pré-requisitos
+
+- **JDK 17 ou superior** (verifique com `java -version`)
+- **Docker** (para subir o MySQL via Docker Compose) ou um MySQL 8 local
+- Não é necessário instalar Maven: use o `./mvnw` incluso no projeto
+
 ### 1. Subir o banco de dados (MySQL)
 
 A forma mais simples é com Docker Compose, que já cria o banco `sistema_vet_app`, o usuário `vet`/`vet` e importa o dump `sistema_vet_app.sql` automaticamente:
