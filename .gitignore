@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# Maven / build
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Banco de dados H2 (dados locais)
+*.mv.db
+*.trace.db
+*.lock.db
+
+# Logs
+*.log
